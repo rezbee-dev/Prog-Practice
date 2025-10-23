@@ -4,41 +4,56 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.WriteLine("Testing 'GenerateRandomNumberPair()'");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine($"#{i+1} - {GenerateRandomNumberPairForDivision()}");
+        }
     }
 
     // Generate math exercises for add, subtract, multiply, and division operations
-
-    // - Generate random numbers
-    static Tuple<int, int> GenerateRandomNumberPair()
+    static (int, int) GenerateRandomNumberPair()
     {
+
         Random random = new();
         int num1 = random.Next(1, 100);
         int num2 = random.Next(1, 100);
 
-        return (num1, num2);
+        return (Math.Max(num1, num2), Math.Min(num1, num2));
     }
 
-    static CheckAnswer(Tuple<int, int> exerciseNums, Operator op, int answer)
+    static (int, int) GenerateRandomNumberPairForDivision()
     {
-        int correctAnswer = 0;
+        Random random = new();
+        int num1 = random.Next(1, 100);
+        int factor = random.Next(2, 10);
 
-        switch (op)
+        return (num1 * factor, num1);
+    }
+
+    static bool CheckAnswer((int,int) exerciseNums, Operator op, int answer)
+    {
+        int correctAnswer;
+
+        correctAnswer = op switch
         {
-            case Operator.ADD:
-                correctAnswer = exerciseNums.Item1 + exerciseNums.Item2;
-                break;
-            case Operator.SUBTRACT:
-                correctAnswer = exerciseNums.Item1 - exerciseNums.Item2;
-                break;
-            case Operator.MULTIPLY:
-                correctAnswer = exerciseNums.Item1 * exerciseNums.Item2;
-                break;
-            case Operator.DIVIDE:
-                correctAnswer = exerciseNums.Item1 / exerciseNums.Item2;
-                break;
-            default:
-                throw new ArgumentException("argument must be one of four arithmetic operator types!");
+            Operator.ADD => exerciseNums.Item1 + exerciseNums.Item2,
+            Operator.SUBTRACT => exerciseNums.Item1 - exerciseNums.Item2,
+            Operator.MULTIPLY => exerciseNums.Item1 * exerciseNums.Item2,
+            Operator.DIVIDE => exerciseNums.Item1 / exerciseNums.Item2,
+            _ => throw new ArgumentException("argument must be one of four arithmetic operator types!"),
+        };
+
+        return correctAnswer == answer;
+    }
+
+    // Handle user input
+    static int ReadAnswer()
+    {
+        int answer;
+
+        while (true)
+        {
             
         }
     }
