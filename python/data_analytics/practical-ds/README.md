@@ -61,9 +61,23 @@
 - Ex: `itunes_df['Genre'].unique().shape`
 </details>
 
-<details><summary>10) What is the Pearson Correlation, and how do you calculate it for a dataframe?</summary>
+<details><summary>11) What is the Pearson Correlation, and how do you calculate it for a dataframe?</summary>
 
 - Measures how linearly correlated two datasets are
   - -1 (inverse correlation), to 0 (no correlation), to +1 (perfect linear correlation)
   - `<df>.corr()`
 </details>
+
+<details><summary>12) How would you obtain a random sample of items from a dataframe?</summary>
+
+- `<df>.sample()`
+- ex: `itunes_df[itunes_df['Composer'].isna()].sample(5, random_state=42).head()`
+  - `random_state=42` seed so that we can replicate the random generation again
+</details>
+
+<details><summary>13) How to drop all rows with missing values?</summary>
+
+- `<dataframe>.dropna(inplace=True)`
+- Ex: `itunes_df.dropna(inplace=True)`
+</details>
+
