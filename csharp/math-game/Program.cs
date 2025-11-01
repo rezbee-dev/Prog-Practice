@@ -4,11 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Testing 'GenerateRandomNumberPair()'");
-        for (int i = 0; i < 5; i++)
-        {
-            Console.WriteLine($"#{i+1} - {GenerateRandomNumberPairForDivision()}");
-        }
+        int result = ReadAnswer();
+        Console.WriteLine($"Result: {result}");
+        // Console.WriteLine("Testing 'GenerateRandomNumberPair()'");
+        // for (int i = 0; i < 5; i++)
+        // {
+        //     Console.WriteLine($"#{i+1} - {GenerateRandomNumberPairForDivision()}");
+        // }
     }
 
     // Generate math exercises for add, subtract, multiply, and division operations
@@ -50,11 +52,14 @@ class Program
     // Handle user input
     static int ReadAnswer()
     {
-        int answer;
-
         while (true)
         {
-            
+            Console.Write("Answer: ");
+            string? answer = Console.ReadLine();
+            if(int.TryParse(answer, out int result))
+            {
+                return result;
+            }
         }
     }
 
