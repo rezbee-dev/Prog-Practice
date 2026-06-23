@@ -33,7 +33,7 @@ class Program
         return (num1 * factor, num1);
     }
 
-    static bool CheckAnswer((int,int) exerciseNums, Operator op, int answer)
+    static bool CheckAnswer((int, int) exerciseNums, Operator op, int answer)
     {
         int correctAnswer;
 
@@ -50,7 +50,7 @@ class Program
     }
 
     // Handle user input
-    static int ReadAnswer()
+    static int PromptAnswer()
     {
         while (true)
         {
